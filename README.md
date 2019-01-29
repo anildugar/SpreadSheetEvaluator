@@ -1,4 +1,4 @@
-# SpreadSheetEvaluator
+# Spread Sheet Evaluator
 It is a Java based Console Application where the output of the cat command is piped into the java Application 
 which will read the contents of the input file and parse and evaluate the expressions within the spreadsheet.
 
