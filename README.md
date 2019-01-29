@@ -12,3 +12,7 @@ Validation :
  
  Evaluation : If the validation is successfull, it will evaluate the every postfix expression and provide cell values and will keep 
  calculating until all the cells within the spreadsheet are evaluated.
+ 
+ PS:
+ 
+ I wrote the above solution as part of an evaluation excercise for one of the organization in singapore.
