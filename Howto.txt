@@ -2,5 +2,6 @@ Compile
     Step 1 : Create a bin directory
     Step 2 : javac -d bin Spreadsheet/*.javac
 
-Run
-    Step 1 : cat .\TestSpreadSheetData\spreadsheet3X2.txt  | java -cp ./bin Spreadsheet.Spreadsheet
+Run 
+    On Linux   : cat .\TestSpreadSheetData\spreadsheet3X2.txt  | java -cp ./bin Spreadsheet.Spreadsheet
+    On Windows : type .\TestSpreadSheetData\spreadsheet3X2.txt  | java -cp ./bin Spreadsheet.Spreadsheet
