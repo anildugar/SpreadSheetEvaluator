@@ -6,18 +6,17 @@
  * It validates the spreadsheet input, initializes the spreadsheet input data, detects cyclic dependencies and finally evaluates and prints the results.
  */
 class SpreadSheetManager {
-	
-	//Holds & validates the spreadsheet data
+
+	// Holds & validates the spreadsheet data
 	private SpreadSheetDataManager spreadSheetDataManager;
-	
-	//creates and evaluates mathematical expressions. 
+
+	// creates and evaluates mathematical expressions.
 	private SpreadSheetExpressionManager spreadSheetExpressionManager;
-	
-	//Detects cyclic dependency.
+
+	// Detects cyclic dependency.
 	private CyclicDependencyDetector cyclicDependency;
 
-	public SpreadSheetManager(SpreadSheetFileReader spreadSheetReader) 
-	{
+	public SpreadSheetManager(SpreadSheetFileReader spreadSheetReader) {
 		spreadSheetDataManager = new SpreadSheetDataManager(spreadSheetReader);
 		spreadSheetExpressionManager = new SpreadSheetExpressionManager(spreadSheetDataManager);
 		cyclicDependency = new CyclicDependencyDetector(spreadSheetDataManager, spreadSheetExpressionManager);
@@ -33,7 +32,7 @@ class SpreadSheetManager {
 		boolean bResult = spreadSheetDataManager.validate();
 		if (bResult) {
 			initialize();
-			bResult = !cyclicDependency.IsSpreadSheetCyclicDependent();
+			bResult = !cyclicDependency.isSpreadSheetCyclicDependent();
 		}
 		return bResult;
 	}
@@ -41,7 +40,7 @@ class SpreadSheetManager {
 	private void initialize() {
 		spreadSheetDataManager.initialize();
 		spreadSheetExpressionManager.initialize();
-	}	
+	}
 
 	private void evaluateAndPrint() {
 		spreadSheetExpressionManager.evaluateAndPrint();

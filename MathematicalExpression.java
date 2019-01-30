@@ -44,22 +44,22 @@ final class MathematicalExpression
 				expressionSymbols.add(symbol);
 		} 
 
-		EvaluateExpressionType();
+		evaluateExpressionType();
 
-		EvaluateDepedencysymbols();
+		evaluateDepedencysymbols();
 	}
 
-	public ArrayList<String> GetDependencySymbols() { return dependencySymbols; }
+	public ArrayList<String> getDependencySymbols() { return dependencySymbols; }
 
 	/*
 	 * For a given cell, Get all the dependencies in the mathematical expression.
 	 */
-	private void EvaluateDepedencysymbols()
+	private void evaluateDepedencysymbols()
 	{
 		//System.out.println("Start EvaluateDepedencysymbols..");
 		for (String expressionSymbol : expressionSymbols)
 		{
-			if (!Calculator.IsOperandOrOperator(expressionSymbol))
+			if (!Calculator.isOperandOrOperator(expressionSymbol))
 				dependencySymbols.add(expressionSymbol);
 		}
 		//System.out.println("End EvaluateDepedencysymbols..");
@@ -68,7 +68,7 @@ final class MathematicalExpression
 	/*
 	 * Update the expression symbols individually with their respective values.
 	 */
-	public MathematicalExpressionType UpdateExpression(HashMap<String, Float> spreadSheetCellValues)
+	public MathematicalExpressionType updateExpression(HashMap<String, Float> spreadSheetCellValues)
 	{
 		try
 		{
@@ -82,7 +82,7 @@ final class MathematicalExpression
 					expressionSymbols.set(iIndex, Float.toString(value));
 				}
 			}
-			EvaluateExpressionType();
+			evaluateExpressionType();
 		}
 		catch(Exception ex)
 		{
@@ -96,12 +96,12 @@ final class MathematicalExpression
 	 * Check and determine whether the given expression is of type RawValues or Placeholder.
 	 * If a given expression contains a spreadsheet cell as part of expression expression is of type placeholder. 
 	 */
-	private void EvaluateExpressionType()
+	private void evaluateExpressionType()
 	{
 		//System.out.println("Start EvaluateExpressionType..");
 		for (String expressionSympol : expressionSymbols)
 		{
-			if (Calculator.IsOperandOrOperator(expressionSympol))
+			if (Calculator.isOperandOrOperator(expressionSympol))
 			{
 				expressionType = MathematicalExpressionType.RawValues;
 			}
@@ -125,7 +125,7 @@ final class MathematicalExpression
 	/*
 	 * Calculate the postfix expression. 
 	 */
-	public float Calculate()
+	public float calculate()
 	{
 		try
 		{
@@ -133,13 +133,13 @@ final class MathematicalExpression
 			Stack<Float> stack = new Stack<Float>();
 			for (String symbol : expressionSymbols)
 			{
-				if (Calculator.IsOperator(symbol))
+				if (Calculator.isOperator(symbol))
 				{
 					float left = stack.pop();
 					float right = stack.pop();
-					stack.push(Calculator.Calculate(right, left, symbol));
+					stack.push(Calculator.calculate(right, left, symbol));
 				}
-				else if (Calculator.IsOperand(symbol))
+				else if (Calculator.isOperand(symbol))
 				{
 					stack.push(Float.parseFloat(symbol));
 				}

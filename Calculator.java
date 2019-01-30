@@ -4,12 +4,9 @@
  * 2. An Operator
  * 3. Calculates a set of operands based on the operator. 
  */
-final class Calculator
-{
-	public static boolean IsOperator(String mathoperator)
-	{
-		switch (mathoperator)
-		{
+final class Calculator {
+	public static boolean isOperator(String mathoperator) {
+		switch (mathoperator) {
 		case "+":
 		case "-":
 		case "*":
@@ -19,37 +16,29 @@ final class Calculator
 		return false;
 	}
 
-	public static boolean IsOperandOrOperator(String expressionSymbol)
-	{            
-		return IsOperator(expressionSymbol) || IsOperand(expressionSymbol);
+	public static boolean isOperandOrOperator(String expressionSymbol) {
+		return isOperator(expressionSymbol) || isOperand(expressionSymbol);
 	}
-    
+
 	/*
-	 * If it is a value it will get parsed.
-	 * 1. For e.g if the operand value is 5, IsOperand function will return true.
-	 * 2. For e.g if the operand value is a cell value (A1, A2, etc), IsOperand function will return false.
+	 * If it is a value it will get parsed. 1. For e.g if the operand value is 5,
+	 * IsOperand function will return true. 2. For e.g if the operand value is a
+	 * cell value (A1, A2, etc), IsOperand function will return false.
 	 */
-	public static boolean IsOperand(String operand)
-	{
+	public static boolean isOperand(String operand) {
 		boolean bParsed;
-		try
-		{
+		try {
 			Float.parseFloat(operand);
 			bParsed = true;
-		}
-		catch(NumberFormatException ex)
-		{
+		} catch (NumberFormatException ex) {
 			bParsed = false;
 		}
 		return bParsed;
 	}
 
-	public static float Calculate(float leftOperand, float rightOperand, String mathoperator)
-	{
-		try
-		{
-			switch (mathoperator)
-			{
+	public static float calculate(float leftOperand, float rightOperand, String mathoperator) {
+		try {
+			switch (mathoperator) {
 			case "+":
 				return leftOperand + rightOperand;
 			case "-":
@@ -60,11 +49,9 @@ final class Calculator
 				return leftOperand / rightOperand;
 			}
 			return 0;
-		}
-		catch(Exception ex)
-		{
+		} catch (Exception ex) {
 			return 0;
 		}
-		
+
 	}
 }

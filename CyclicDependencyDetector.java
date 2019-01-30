@@ -17,7 +17,7 @@ final class CyclicDependencyDetector
 	 * Every cell in the spreadsheet is evaluated against the symbols within the mathematical expression
 	 * and then check if there is a cyclic dependency between the 2 cells.
 	 */
-	public boolean IsSpreadSheetCyclicDependent()
+	public boolean isSpreadSheetCyclicDependent()
 	{
 		//System.out.println("Start IsSpreadSheetCyclicDependent..");
 		boolean bIsCyclicDependent = false;
@@ -31,7 +31,7 @@ final class CyclicDependencyDetector
 				if (expression.expressionType == MathematicalExpressionType.RawValues)
 					continue;
 								
-				for (String depedencySymbol : expression.GetDependencySymbols())
+				for (String depedencySymbol : expression.getDependencySymbols())
 				{					
 					MathematicalExpression depedencyExpression = mathematicalExpressionManager.getMathematicalExpression(depedencySymbol);
 					
@@ -47,7 +47,7 @@ final class CyclicDependencyDetector
 						continue;
 
 					//Check if one cell is dependent on another one.
-					if (depedencyExpression.GetDependencySymbols().contains(tableCell))
+					if (depedencyExpression.getDependencySymbols().contains(tableCell))
 					{
 						//Cyclic Dependency Detected.
 						bIsCyclicDependent = true;
