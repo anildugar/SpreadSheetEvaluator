@@ -1,3 +1,5 @@
+package Spreadsheet;
+
 import java.util.ArrayList;
 
 /* 
@@ -8,8 +10,8 @@ import java.util.ArrayList;
  * 		2. SpreadSheetExpressionManager class : It needs IDataManager to create MathematicalExpression per line.
  */
 public interface IDataManager {
-	
-	String getLine(int line);        
+
+    String getLine(int line);
+
     ArrayList<String> getAllSpreadSheetCells();
 }
-
